@@ -19,7 +19,7 @@ jobs:
     needs: dependencies
     steps:
       - uses: actions/checkout@v4
-      - uses: setup-node@v4 
+      - uses: actions/setup-node@v4 
       - name: dependencies
         run: npm run build
   
@@ -28,7 +28,7 @@ jobs:
     needs: dependencies
     steps:
       - uses: actions/checkout@v4
-      - uses: setup-node@v4 
+      - uses: actions/setup-node@v4 
       - name: dependencies
         run: npm run linters
   
@@ -37,7 +37,7 @@ jobs:
     needs: [dependencies, build]
     steps:
       - uses: actions/checkout@v4
-      - uses: setup-node@v4 
+      - uses: actions/setup-node@v4 
       - name: dependencies
         run: npm run deploy
   

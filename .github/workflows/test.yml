@@ -1,0 +1,40 @@
+name: test
+
+on: push
+
+jobs: 
+  dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: setup-node@v4 
+      - name: dependencies
+        run: npm i
+  
+  build:
+    runs-on: ubuntu-latest
+    needs: dependencies
+    steps:
+      - uses: actions/checkout@v4
+      - uses: setup-node@v4 
+      - name: dependencies
+        run: npm run build
+  
+  linters:
+    runs-on: ubuntu-latest
+    needs: dependencies
+    steps:
+      - uses: actions/checkout@v4
+      - uses: setup-node@v4 
+      - name: dependencies
+        run: npm run linters
+  
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [dependencies, build]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: setup-node@v4 
+      - name: dependencies
+        run: npm run deploy
+  
